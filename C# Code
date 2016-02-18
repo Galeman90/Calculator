@@ -1,0 +1,106 @@
+
+using System;
+using System.Text;
+using System.Data;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Calculator
+{
+    public partial class _Default : System.Web.UI.Page
+    {
+
+       protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected Double power(double num1, int num2)
+        {
+
+            if (num2 > 1)
+            {
+                num2 = num2 - 1;
+                double temp1 = power(num1, num2);
+                temp1 = temp1 * num1;
+                return temp1;
+
+            }
+            else
+            {
+
+                return num1;
+            }
+        }
+
+
+        protected void add_bttn1_Click(object sender, EventArgs e)
+        {
+            double result = 0.0;
+            result = System.Convert.ToDouble(add_txt1.Text) + System.Convert.ToDouble(add_txt2.Text);
+            add_txt3.Text = result.ToString();
+
+        }
+
+        protected void sub_bttn1_Click(object sender, EventArgs e)
+        {
+            double result = 0.0;
+            result = System.Convert.ToDouble(sub_txt1.Text) - System.Convert.ToDouble(sub_txt2.Text);
+            sub_txt3.Text = result.ToString();
+
+        }
+
+        protected void mult_bttn1_Click(object sender, EventArgs e)
+        {
+            double result = 0.0;
+            result = System.Convert.ToDouble(mult_txt1.Text) * System.Convert.ToDouble(mult_txt2.Text);
+            mult_txt3.Text = result.ToString();
+
+        }
+
+        protected void dvd_bttn1_Click(object sender, EventArgs e)
+        {
+            double result = 0.0;
+            result = System.Convert.ToDouble(dvd_txt1.Text) / System.Convert.ToDouble(dvd_txt2.Text);
+            dvd_txt3.Text = result.ToString();
+
+        }
+
+        protected void pwr_bttn1_Click(object sender, EventArgs e)
+        {
+            double result = 0;
+            double num1 = System.Convert.ToDouble(pwr_txt1.Text);
+            int num2 = System.Convert.ToInt32(pwr_txt2.Text);
+            result = power(num1, num2);
+            pwr_txt3.Text = result.ToString();
+
+        }
+        protected void sqrt_bttn1_Click(object sender, EventArgs e)
+        {
+            double result = 0.0;
+            result = Math.Sqrt(System.Convert.ToDouble(sqrt_txt1.Text));
+            sqrt_txt2.Text = result.ToString();
+
+        }
+
+        protected Object sqrt(Object num)
+        {
+            return System.Math.Sqrt(System.Convert.ToInt32(num));
+        }
+        protected void exp_bttn1_Click(object sender, EventArgs e)
+        {
+            double result = 0.0;
+            string express = exp_txt1.Text; 
+            DataTable dt = new DataTable();
+            result = System.Convert.ToDouble(dt.Compute(express, string.Empty));            
+            exp_txt2.Text = result.ToString();
+
+        }
+    }
+}
+
+
+
