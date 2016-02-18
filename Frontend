@@ -1,0 +1,157 @@
+
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Calculator._Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title> Calculator</title>
+    <style>
+ th, td {
+    border: 1px solid grey;}
+    table 
+    {
+        border: 2px solid orange;
+        vertical-align: text-top;}
+  TextBox 
+     {
+        vertical-align:top; margin:auto;
+       }
+    h2
+    {
+        background-color:Skyblue; width:30%; margin:auto;}
+        
+  .odd 
+  {
+      background-color:#C8BBFF;
+      }
+  .even
+  {
+      background-color:#B4AA5E; 
+      }
+</style>
+</head>
+<body>
+<center>
+ <br />
+ <div>
+   <h2>Calculator</h2>
+   </div>
+   <br />
+   <hr style="color:green"/>
+   <br />
+ 
+    <form id="form1" runat="server">
+  <asp:Table ID="Table1" runat="server" Height="182px" Width="556px">
+    <asp:TableRow class="odd">
+     <asp:TableCell> 
+      <asp:RegularExpressionValidator ValidationGroup="addition" ID="add_val1" runat="server" ErrorMessage="Please enter only Numbers" controltovalidate="add_txt1" ValidationExpression="^[-+]?[0-9]*\.?[0-9]*$" EnableClientScript="True" SetFocusOnError="False"></asp:RegularExpressionValidator>
+          <div><asp:TextBox ID="add_txt1" runat="server" ></asp:TextBox> </div>        
+         <asp:RequiredFieldValidator ValidationGroup="addition" ID="RequiredFieldValidator1" runat="server" ErrorMessage="This field can't be empty" controltovalidate="add_txt1" EnableClientScript="True"></asp:RequiredFieldValidator>
+          </asp:TableCell>        
+      <asp:TableCell>
+      <asp:RegularExpressionValidator ValidationGroup="addition" ID="add_val2" runat="server" ErrorMessage="Please enter only Numbers" controltovalidate="add_txt2" ValidationExpression="^[-+]?[0-9]*\.?[0-9]*$"></asp:RegularExpressionValidator>
+          <div><asp:TextBox ID="add_txt2" runat="server" ></asp:TextBox></div>           
+         <asp:RequiredFieldValidator ValidationGroup="addition" ID="RequiredFieldValidator2" runat="server" ErrorMessage="This field can't be empty" controltovalidate="add_txt2"></asp:RequiredFieldValidator>
+         </asp:TableCell>
+   <asp:TableCell> 
+         <center><asp:Button ID="add_bttn1"  runat="server" Text=" Addition " onclick="add_bttn1_Click" ValidationGroup="addition" /></center></asp:TableCell>
+      <asp:TableCell>
+          <asp:TextBox ID="add_txt3" runat="server"></asp:TextBox></asp:TableCell>
+   </asp:TableRow>
+    <asp:TableRow class="even">
+      <asp:TableCell>
+          <asp:RegularExpressionValidator ValidationGroup="substraction" ID="sub_val1" runat="server" ErrorMessage="Please enter only Numbers" controltovalidate="sub_txt1" ValidationExpression="^[-+]?[0-9]*\.?[0-9]*$"></asp:RegularExpressionValidator>
+          <div><asp:TextBox ID="sub_txt1" runat="server"></asp:TextBox></div>
+          <asp:RequiredFieldValidator ValidationGroup="substraction" ID="RequiredFieldValidator3" runat="server" ErrorMessage="This field can't be empty" controltovalidate="sub_txt1"></asp:RequiredFieldValidator></asp:TableCell>
+      <asp:TableCell>
+           <asp:RegularExpressionValidator ValidationGroup="substraction" ID="sub_val2" runat="server" ErrorMessage="Please enter only Numbers" controltovalidate="sub_txt2" ValidationExpression="^[-+]?[0-9]*\.?[0-9]*$"></asp:RegularExpressionValidator>
+          <div><asp:TextBox ID="sub_txt2" runat="server" ></asp:TextBox></div>
+          <asp:RequiredFieldValidator ValidationGroup="substraction" ID="RequiredFieldValidator4" runat="server" ErrorMessage="This field can't be empty" controltovalidate="sub_txt2"></asp:RequiredFieldValidator>
+          </asp:TableCell>
+      <asp:TableCell>
+          <center><asp:Button ID="sub_bttn1"  runat="server" Text=" Sustraction " onclick="sub_bttn1_Click" ValidationGroup="substraction"/></center></asp:TableCell>
+      <asp:TableCell>
+          <asp:TextBox ID="sub_txt3" runat="server"></asp:TextBox></asp:TableCell>
+   </asp:TableRow>
+    <asp:TableRow class="odd">
+      <asp:TableCell>
+          <asp:RegularExpressionValidator ValidationGroup="multiplication" ID="mult_val1" runat="server" ErrorMessage="Please enter only Numbers" controltovalidate="mult_txt1" ValidationExpression="^[-+]?[0-9]*\.?[0-9]*$"></asp:RegularExpressionValidator>
+          <div><asp:TextBox ID="mult_txt1" runat="server"></asp:TextBox></div>
+          <asp:RequiredFieldValidator ValidationGroup="multiplication" ID="RequiredFieldValidator5" runat="server" ErrorMessage="This field can't be empty" controltovalidate="mult_txt1"></asp:RequiredFieldValidator>
+          </asp:TableCell>
+      <asp:TableCell>
+          <asp:RegularExpressionValidator ValidationGroup="multiplication" ID="mult_val2" runat="server" ErrorMessage="Please enter only Numbers" controltovalidate="mult_txt2" ValidationExpression="^[-+]?[0-9]*\.?[0-9]*$"></asp:RegularExpressionValidator>
+          <div><asp:TextBox ID="mult_txt2" runat="server"></asp:TextBox></div>
+          <asp:RequiredFieldValidator ValidationGroup="multiplication" ID="RequiredFieldValidator6" runat="server" ErrorMessage="This field can't be empty" controltovalidate="mult_txt2"></asp:RequiredFieldValidator>
+          </asp:TableCell>
+     <asp:TableCell>
+         <center> <asp:Button ID="mult_bttn1" runat="server"  Text=" Multiplication " ValidationGroup="multiplication" onclick="mult_bttn1_Click"/></center></asp:TableCell>
+      <asp:TableCell>
+          <asp:TextBox ID="mult_txt3" runat="server"></asp:TextBox></asp:TableCell>
+   </asp:TableRow>
+    <asp:TableRow  class="even">
+      <asp:TableCell>
+          <asp:RegularExpressionValidator ValidationGroup="division" ID="RegularExpressionValidator2" runat="server" ErrorMessage="Please enter only Numbers" controltovalidate="dvd_txt1" ValidationExpression="^[-+]?[0-9]*\.?[0-9]*$"></asp:RegularExpressionValidator>
+          <div><asp:TextBox ID="dvd_txt1" runat="server"></asp:TextBox></div>
+          <asp:RequiredFieldValidator ValidationGroup="division" ID="RequiredFieldValidator7" runat="server" ErrorMessage="This field can't be empty" controltovalidate="dvd_txt1"></asp:RequiredFieldValidator>
+          </asp:TableCell>
+      <asp:TableCell>
+          <asp:RegularExpressionValidator ValidationGroup="division" ID="RegularExpressionValidator3" runat="server" ErrorMessage="Please enter only Numbers" controltovalidate="dvd_txt2" ValidationExpression="^[-+]?[0-9]*\.?[0-9]*$"></asp:RegularExpressionValidator>
+          <div><asp:TextBox ID="dvd_txt2" runat="server"></asp:TextBox></div>
+          <asp:RequiredFieldValidator ValidationGroup="division" ID="RequiredFieldValidator8" runat="server" ErrorMessage="This field can't be empty" controltovalidate="dvd_txt1"></asp:RequiredFieldValidator>
+          </asp:TableCell>
+      <asp:TableCell>
+          <center><asp:Button ID="dvd_bttn1" runat="server" Text=" Division " ValidationGroup="division" onclick="dvd_bttn1_Click"/></center></asp:TableCell>
+      <asp:TableCell>
+          <asp:TextBox ID="dvd_txt3" runat="server"></asp:TextBox></asp:TableCell>
+   </asp:TableRow>
+    <asp:TableRow class="odd">
+      <asp:TableCell>
+          <asp:RegularExpressionValidator ValidationGroup="power" ID="RegularExpressionValidator4" runat="server" ErrorMessage="Please enter only Numbers" controltovalidate="pwr_txt1" ValidationExpression="^[-+]?[0-9]*\.?[0-9]*$"></asp:RegularExpressionValidator>          
+          <div><asp:TextBox ID="pwr_txt1" runat="server"></asp:TextBox></div>
+          <asp:RequiredFieldValidator ValidationGroup="power" ID="RequiredFieldValidator9" runat="server" ErrorMessage="This field can't be empty" controltovalidate="pwr_txt1"></asp:RequiredFieldValidator>
+          </asp:TableCell>
+      <asp:TableCell>
+          <asp:RegularExpressionValidator ValidationGroup="power" ID="RegularExpressionValidator5" runat="server" ErrorMessage="Please enter only Integers" controltovalidate="pwr_txt2" ValidationExpression="^[0-9]*"></asp:RegularExpressionValidator>
+          <div><asp:TextBox ID="pwr_txt2" runat="server"></asp:TextBox></div>
+          <asp:RequiredFieldValidator ValidationGroup="power" ID="RequiredFieldValidator10" runat="server" ErrorMessage="This field can't be empty" controltovalidate="pwr_txt2"></asp:RequiredFieldValidator>
+          </asp:TableCell>
+      <asp:TableCell>
+          <center><asp:Button ID="pwr_bttn1"  runat="server" ValidationGroup="power" Text=" Calculate Power " onclick="pwr_bttn1_Click"/></center></asp:TableCell>
+      <asp:TableCell>
+          <asp:TextBox ID="pwr_txt3" runat="server"></asp:TextBox></asp:TableCell>
+   </asp:TableRow>
+    <asp:TableRow class="even">
+      <asp:TableCell ColumnSpan="2" style="align-horizontal:center">
+          <center><asp:RegularExpressionValidator ID="RegularExpressionValidator6" ValidationGroup="root" runat="server" ErrorMessage="Please enter only Positive Numbers" controltovalidate="sqrt_txt1" ValidationExpression="^[0-9]*\.?[0-9]*$"></asp:RegularExpressionValidator>
+          <div><asp:TextBox ID="sqrt_txt1" runat="server" ></asp:TextBox></div>
+          <asp:RequiredFieldValidator ID="RequiredFieldValidator11" ValidationGroup="root" runat="server" ErrorMessage="This field can't be empty" controltovalidate="sqrt_txt1"></asp:RequiredFieldValidator>
+          </center>
+          </asp:TableCell>      
+      <asp:TableCell>
+          <center><asp:Button ID="sqrt_bttn1" runat="server"  Text=" Square Root " ValidationGroup="root" onclick="sqrt_bttn1_Click"/></center></asp:TableCell>
+      <asp:TableCell>
+          <asp:TextBox ID="sqrt_txt2" runat="server"></asp:TextBox></asp:TableCell>
+   </asp:TableRow>
+   <asp:TableRow class="odd">
+      <asp:TableCell ColumnSpan="2">
+          <center><asp:RegularExpressionValidator ID="RegularExpressionValidator7" ValidationGroup="expression" runat="server" ErrorMessage="Please enter valid Expression with numbers and +, *, -, /" controltovalidate="exp_txt1" validationExpression="([-+]?[0-9]*\.?[0-9]+[\/\+\-\*])+([-+]?[0-9]*\.?[0-9]+)"></asp:RegularExpressionValidator>
+          <div><asp:TextBox ID="exp_txt1" runat="server" ></asp:TextBox></div>
+          <asp:RequiredFieldValidator ID="RequiredFieldValidator12" ValidationGroup="expression" runat="server" ErrorMessage="This field can't be empty" controltovalidate="exp_txt1"></asp:RequiredFieldValidator>
+          </center></asp:TableCell>      
+      <asp:TableCell>
+          <center><asp:Button ID="exp_bttn1" runat="server"  Text=" Calculate " ValidationGroup="expression" onclick="exp_bttn1_Click"/></center></asp:TableCell>
+      <asp:TableCell>
+          <asp:TextBox ID="exp_txt2" runat="server"></asp:TextBox></asp:TableCell>
+   </asp:TableRow>
+    </asp:Table>
+    </form>
+    </center>
+</body>
+</html>
+
+
+
+
